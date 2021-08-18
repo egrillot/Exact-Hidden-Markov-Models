@@ -66,8 +66,9 @@ class Encoder_RF_HMM(RF_HMM):
         self.encoder=Encoder(input_dim, type)
 
     def train(self, X, T, split=0.4, display=False):
-        # autoencoder_train is a m*n array ( n : number of features)
-        #split is the portion of data saved for the rf_hmm training
+        # X is a m*n array ( n : number of features)
+        # T is the length wished of sequence
+        # split is the portion of data saved for the rf_hmm training
 
         # split the training set for the encoder training and the rf-hmm training
         border=int((1-split)*X.shape[0])
