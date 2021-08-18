@@ -101,4 +101,4 @@ class Encoder_RF_HMM(RF_HMM):
         rf_hmm_input=self.encoder.predict(autoencoder_input)
 
         # evaluation with the rf-hmm
-        self.model.eval(rf_hmm_input)
+        return self.model.eval(rf_hmm_input)
