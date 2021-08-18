@@ -6,6 +6,9 @@ import numpy as np
 class utils:
 
     def form_autoencodeur_dataset(X, T):
+        # make sequence of length T
+        # output dim : X.shape[0]*T
+        
         result_X = []
         m,n=X.shape
         for i in range(T,m):
