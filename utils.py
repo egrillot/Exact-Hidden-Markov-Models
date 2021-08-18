@@ -4,8 +4,29 @@ from hmmlearn.utils import log_mask_zero
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 from scipy import special
+from particles import kalman
+from abc import ABC, abstractmethod 
 
 class utils():
+    
+    def kalman_simulate_data(F, Q, x_init, T, dim_states, G=None):
+        true_data = np.zeros((1,T,dim_states))
+        cur_x = x_init
+        for k in range(T):
+            # Check if a G transformation matrix is there
+            if G is not None:
+                v = np.matmul(G, np.random.multivariate_normal(np.zeros((Q.shape[0],)), Q))
+            else:
+                v = np.random.multivariate_normal(np.zeros(dim_states), Q)
+            true_data[0,k] = (F @ cur_x.reshape((dim_states, 1)) + v.reshape((dim_states,1))).reshape(dim_states,)
+            cur_x = true_data[0,k]
+        return true_data
+
+    def kalman_make_data(H, R, true_data, T, dim_obs, dim_states):
+        data = np.zeros((1,T,dim_obs))
+        for k in range(true_data.shape[1]):
+            data[0,k] = (np.matmul(H, true_data[0,k,:].reshape(dim_states,1)) + np.random.multivariate_normal(np.zeros(dim_obs), R).reshape((dim_obs,1))).reshape(dim_obs,)
+        return data
 
     def dataset_to_sequences(X, T):
         # make sequence of length T
