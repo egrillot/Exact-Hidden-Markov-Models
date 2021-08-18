@@ -7,7 +7,7 @@ from scipy import special
 
 class utils():
 
-    def form_autoencodeur_dataset(X, T):
+    def dataset_to_sequences(X, T):
         # make sequence of length T
         # output dim : X.shape[0]*T
 
