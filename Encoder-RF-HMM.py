@@ -2,19 +2,7 @@ from RF-HMM import RF_HMM
 import tensorflow as tf
 import matplotlib.pyplot as plt
 import numpy as np
-
-class utils:
-
-    def form_autoencodeur_dataset(X, T):
-        # make sequence of length T
-        # output dim : X.shape[0]*T
-        
-        result_X = []
-        m,n=X.shape
-        for i in range(T,m):
-            result_X.append(X[i-T:i])
-        result_X = np.array(result_X).reshape(len(result_X),T,n)
-        return result_X
+import utils
 
 class Encoder():
 
