@@ -7,6 +7,7 @@ from hmmlearn.utils import log_mask_zero
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import mean_absolute_error, mean_squared_error, accuracy_score
 from scipy import special
+from Exact-Hidden-Markov-Models import utils
 
 class utils():
 
