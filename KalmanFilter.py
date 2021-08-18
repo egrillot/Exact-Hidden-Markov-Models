@@ -516,3 +516,41 @@ class KalmanFilterCustom(simdkalman.KalmanFilter):
                                 estimate_observation_noise=estimate_observation_noise,
                                 estimate_initials=estimate_initials,
                                 callbacks=callbacks)
+    
+    def forecast(self, data):
+        # Make the forecas
+        # Compute the Kalman filter
+
+        n_vars = data.shape[0]
+        n_measurements = data.shape[1]
+
+        m = self.initial_value
+        P = self.initial_covariance
+        F = self.state_transition
+        H = self.observation_model
+        Q = self.process_noise
+        R = self.observation_noise
+
+        n_states = F.shape[-2]
+        dim_obs = H.shape[-2]
+
+        forecast_mean = np.empty((n_vars, n_measurements, dim_obs))
+        forecast_cov = np.empty((n_vars, n_measurements, dim_obs, dim_obs))
+        predicted_state_mean = np.empty((n_vars, n_measurements + 1, n_states))
+        predicted_state_cov = np.empty((n_vars, n_measurements + 1, n_states, n_states))
+        predicted_state_mean[:, 0, :] = m[..., 0]
+        predicted_state_cov[:, 0, :, :] = P
+        for i in range(n_measurements):
+            # forecast of the endog var
+            obs_mean, obs_cov = simdkalman.primitives.predict_observation(m, P, H, R)
+            forecast_mean[:, i, :] = obs_mean[..., 0]
+            forecast_cov[:, i, :, :] = obs_cov
+            # update. R matrix is reshaped to be 3d, it's a requirement for the function
+            y = data[:, i, ...].reshape((n_vars, dim_obs, 1))
+            m, P = simdkalman.primitives.update(m, P, H, R, y)
+            # predict
+            m, P = simdkalman.primitives.predict(m, P, F, Q)
+            predicted_state_mean[:, i + 1, :] = m[..., 0]
+            predicted_state_cov[:, i + 1, :, :] = P
+
+        return forecast_mean, forecast_cov, predicted_state_mean, predicted_state_cov
