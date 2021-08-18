@@ -10,7 +10,8 @@ from scipy import special
 
 class utils():
 
-    def boost_gamma_randomforest(observations, gamma, n_states, threshold=0.80, fixed_threshold=True, percentage_threshold=False, debug=False):
+    def boost_gamma_randomforest(observations, gamma, n_states, threshold=0.80, fixed_threshold=True, 
+                                 percentage_threshold=False, debug=False):
 
         # Compute max and argmax
         temp = np.array([np.max(i) for i in gamma])
@@ -90,8 +91,8 @@ class utils():
 
 class CustomGaussianHmm(GaussianHMM):
 
-    def __init__(self, n_components, covariance_type, min_covar, startprob_prior, transmat_prior, means_prior, means_weight, covars_prior, covars_weight, algorithm, random_state, n_iter, tol, verbose, params, init_params, threshold, fixed_threshold, percentage_threshold):
-        super().__init__(n_components=n_components, covariance_type=covariance_type, min_covar=min_covar, startprob_prior=startprob_prior, transmat_prior=transmat_prior, means_prior=means_prior, means_weight=means_weight, covars_prior=covars_prior, covars_weight=covars_weight, algorithm=algorithm, random_state=random_state, n_iter=n_iter, tol=tol, verbose=verbose, params=params, init_params=init_params)
+    def __init__(self, threshold, fixed_threshold, percentage_threshold):
+        super().__init__()
         self.threshold=threshold
         self.fixed_threshold=fixed_threshold
         self.percentage_threshold=percentage_threshold
@@ -134,7 +135,7 @@ class CustomGaussianHmm(GaussianHMM):
 
         
         # XGB
-        posteriors = utils.boost_gamma_randomforest(obs, posteriors, fwdlattice.shape[1], threshold=0.70, fixed_threshold=True, percentage_threshold=False)
+        posteriors = utils.boost_gamma_randomforest(obs, posteriors, fwdlattice.shape[1], self.threshold, self.fixed_threshold, self.percentage_threshold)
         
         # Classic Gaussian HMM
         if 'm' in self.params or 'c' in self.params:
@@ -152,8 +153,9 @@ class CustomGaussianHmm(GaussianHMM):
 
 class RF_HMM():
     
-    def __init__(self,n_states,covars_type='diag',evaluation_type='acc',params='stmc',threshold=0.70,fixed_threshold=True,percentage_threshold=False):
-        self.model=CustomGaussianHmm(n_components=n_states,covariance_type=covars_type,params=params,threshold=threshold,fixed_threshold=fixed_threshold,percentage_threshold=percentage_threshold)
+    def __init__(self, n_states,covars_type='diag', evaluation_type='acc', params='stmc', threshold=0.70, fixed_threshold=True, percentage_threshold=False):
+        self.model=CustomGaussianHmm(n_components=n_states, covariance_type=covars_type, params=params,
+                                     threshold=threshold, fixed_threshold=fixed_threshold, percentage_threshold=percentage_threshold)
         if evaluation_type=='acc':
             self.evaluation_type=accuracy_score
         if evaluation_type=='mae':
@@ -161,7 +163,7 @@ class RF_HMM():
         if evaluation_type=='mse':
             self.evaluation_type=mean_squared_error
 
-    def train(self,time_series,display=False):
+    def train(self, time_series, display=False):
         # time_series is a n*m array
         # train self.model
         
@@ -175,11 +177,11 @@ class RF_HMM():
             plt.legend()
             plt.show()
     
-    def eval(self,time_series):
+    def eval(self, time_series):
         # time_series is a n*m array
         # evaluate the model on the time_series array
 
-        return utils.eval_model(self.model,time_series)
-
+        return utils.eval_model(self.model, time_series)
+ 
 
     
