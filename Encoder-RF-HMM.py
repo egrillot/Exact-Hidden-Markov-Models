@@ -77,11 +77,11 @@ class Encoder_RF_HMM(RF_HMM):
 
         # train the autoencoder
         autoencoder_train_input=utils.dataset_to_sequences(autoencoder_train, T)
-        self.encoder.train(autoencoder_train_input, display)
+        self.encoder.train(autoencoder_train_input, display=display)
 
         # train the rf-hmm
         rf_hmm_train_input=self.encoder.predict(rf_hmm_train)
-        self.model.train(rf_hmm_train_input,display)
+        self.model.train(rf_hmm_train_input,display=display)
     
     def predict(self, X, T):
         # make prediction 
