@@ -76,7 +76,7 @@ class Encoder_RF_HMM(RF_HMM):
         rf_hmm_train=X[border:]
 
         # train the autoencoder
-        autoencoder_train_input=utils.form_autoencodeur_dataset(autoencoder_train, T)
+        autoencoder_train_input=utils.dataset_to_sequences(autoencoder_train, T)
         self.encoder.train(autoencoder_train_input, display)
 
         # train the rf-hmm
@@ -87,7 +87,7 @@ class Encoder_RF_HMM(RF_HMM):
         # make prediction 
 
         # prepare data for the encoder
-        autoencoder_input=utils.form_autoencodeur_dataset(X, T)
+        autoencoder_input=utils.dataset_to_sequences(X, T)
 
         # encode the dataset
         rf_hmm_input=self.encoder.predict(autoencoder_input)
