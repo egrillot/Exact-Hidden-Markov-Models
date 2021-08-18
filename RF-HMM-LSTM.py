@@ -5,14 +5,24 @@ import matplotlib.pyplot as plt
 
 class LSTM():
 
-    def __init__(self, input_dim, output_dim=1):
+    def __init__(self, input_dim, embedding_dim=0, output_embedding=0, output_dim=1):
         # input_dim is a 2-tuple : (length of sequences, number of features)
+        # if embedding_dim>0 then the value is consider as the size of the set of values can be taken by your time series and a embedding layer is added
+        # and the value T must specified as the length of your sequences 
+        #  /!\ If you aren't working with an integer time series, don't use it /!\
         # if output_dim=1, the problem will be consider as a regression problem elif output_dim>1 it is consider as a classification model
 
+        T,_=input_dim
         input=tf.keras.layers.Input(shape=(input_dim))
-        x=tf.keras.layers.LSTM(128,return_sequences=True)(input)
-        x=tf.keras.layers.LSTM(32)(x)
-        x=tf.keras.layers.BatchNormalization()(x)
+        if embedding_dim!=0:
+            x=tf.keras.layers.Embedding(input_dim=embedding_dim,output_dim=output_embedding, input_length=T)(input)
+            x=tf.keras.layers.LSTM(128,return_sequences=True)(x)
+            x=tf.keras.layers.LSTM(32)(x)
+            x=tf.keras.layers.BatchNormalization()(x)
+        else:
+            x=tf.keras.layers.LSTM(128,return_sequences=True)(input)
+            x=tf.keras.layers.LSTM(32)(x)
+            x=tf.keras.layers.BatchNormalization()(x)
         if output_dim==1:
             x=tf.keras.layers.Dense(output_dim,activation='sigmoid')(X)
         else:
