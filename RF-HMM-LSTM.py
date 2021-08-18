@@ -57,9 +57,10 @@ class LSTM():
 
 class RF_HMM_LSTM(RF_HMM):
 
-    def __init__(self, input_dim, output_dim=1):
-        super().__init__()
-        self.LSTM=LSTM(input_dim, output_dim)
+    def __init__(self, n_components, T, embedding_dim=0, output_embedding=0, output_dim=1):
+        super().__init__(n_components=n_components)
+        input_dim=(T, n_components)
+        self.LSTM=LSTM(input_dim, embedding_dim, output_embedding, output_dim)
     
     def train(self, X, Y, T, split=0.7, display=False):
         # X is a m*n array ( n : number of features)
