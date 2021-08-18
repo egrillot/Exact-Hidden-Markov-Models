@@ -18,12 +18,12 @@ class utils:
 
 class Encoder():
 
-    def __init__(self, input_dim, type='low simple'):
+    def __init__(self, input_dim, type='low dimension'):
         # input_dim is a 2-tuple : (length of the sequence, number of features)
 
         self.type=type
         T,n=input_dim
-        if type=='low simple':
+        if type=='low dimension':
             model=tf.keras.models.Sequential()
             model.add(tf.keras.layers.Bidirectional(tf.keras.layers.LSTM(4, activation='tanh', input_shape=(T,n))))
             model.add(tf.keras.layers.RepeatVector(T))
@@ -61,7 +61,7 @@ class Encoder():
             plt.show()
         # build the encoder
                 
-        if self.type=='low simple':
+        if self.type=='low dimension':
             self.encoder=tf.keras.Model(self.model.input,self.model.layers[0].output)
         if self.type=='high dimension':
             self.encoder=tf.keras.Model(self.model.input,self.model.layers[1].output)
