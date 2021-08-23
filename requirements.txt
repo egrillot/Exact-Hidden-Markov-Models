@@ -1,0 +1,8 @@
+numpy
+matplotlib
+hmmlearn
+sklearn
+scipy
+tensorflow
+particles
+simdkalman
