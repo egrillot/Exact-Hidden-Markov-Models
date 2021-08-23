@@ -7,9 +7,7 @@ from scipy import special
 from particles import kalman
 from abc import ABC, abstractmethod 
 
-class utils():
-    
-    def kalman_simulate_data(F, Q, x_init, T, dim_states, G=None):
+  def kalman_simulate_data(F, Q, x_init, T, dim_states, G=None):
         true_data = np.zeros((1,T,dim_states))
         cur_x = x_init
         for k in range(T):
