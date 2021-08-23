@@ -15,4 +15,23 @@ Let's instance your RF-HMM model :
 model=RF_HMM(n_components, threshold=0.7)
 ~~~
 
-where ``n_components`` correspond to the wished number of hidden states and ``threshold`` is a value to build the training set for the random forest. 
+where ``n_components`` correspond to the wished number of hidden states and ``threshold`` is a value to build the training set for the random forest. Then you can train your model
+on your time series as below :
+
+~~~
+model.train(time_series, display=True)
+~~~
+
+By selecting the ``display`` option you can see the evolution of the likelihood during iterations. Finally, you can evaluate your model on new data from your time series :
+
+~~~
+predicted_probs, predicted_states, predicted_means=model.eval(new_data)
+~~~
+
+where ``predicted_probs`` is an array of probabilities to be in each hidden states at any times, ``predicted_states`` is an array which show for each elements its corresponding state and ``predicted_means`` is an array of means of the gaussian law at any times. The others classes are quite similar, they dispose of a ``train`` method and a ``predict``method.
+
+## Example
+
+We worked on a problem of forecasting the price of a stock exchange. Our approach was to find hidden states to build a better understanding signal instead of only working with a noisy signal (the price). You can find below a comparaison between the obtained likelihood with a simple use of hmmlearn and the obtained likelihood with our custom model being a ``RF_HMM`` instance :
+
+<img src="image/comparaison.png" width=450 heigth=660>
