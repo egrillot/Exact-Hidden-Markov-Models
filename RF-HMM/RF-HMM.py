@@ -73,12 +73,6 @@ class RF_HMM():
     
     def __init__(self,n_states,covars_type='diag',evaluation_type='acc',params='stmc',threshold=0.70,fixed_threshold=True,percentage_threshold=False):
         self.model=CustomGaussianHmm(n_components=n_states,covariance_type=covars_type,params=params,threshold=threshold,fixed_threshold=fixed_threshold,percentage_threshold=percentage_threshold)
-        if evaluation_type=='acc':
-            self.evaluation_type=accuracy_score
-        if evaluation_type=='mae':
-            self.evaluation_type=mean_absolute_error
-        if evaluation_type=='mse':
-            self.evaluation_type=mean_squared_error
 
     def train(self,time_series,display=False):
         # time_series is a n*m array
