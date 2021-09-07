@@ -34,6 +34,6 @@ where ``predicted_probs`` is an array of probabilities to be in each hidden stat
 
 We worked on a problem of forecasting the price of a stock exchange. Our approach was to find hidden states to build a better understanding signal instead of only working with a noisy signal (the price). You can find below a comparaison between the obtained likelihood with a simple use of hmmlearn and the obtained likelihood with our custom model being a ``RF_HMM`` instance :
 
-<img src="images/Comparaison.png">
+<img src="images/Comparaison.png" WIDTH=150 HEIGHT=150>
 
 The class ``RF_HMM_LSTM`` allowed us to make better prediction instead only using an hidden markov model with gaussian emissions and make the inference with the transition matrix.
