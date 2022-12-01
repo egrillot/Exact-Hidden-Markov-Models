@@ -10,7 +10,7 @@ from utils import *
 class CustomGaussianHmm(GaussianHMM):
 
     def __init__(self, n_components, covariance_type, params, threshold, fixed_threshold, percentage_threshold):
-        super().__init__(n_components=n_components,covariance_type=covariance_type,params=params,threshold=threshold,fixed_threshold=fixed_threshold,percentage_threshold=percentage_threshold)
+        super().__init__(n_components=n_components,covariance_type=covariance_type,params=params)
         self.threshold=threshold
         self.fixed_threshold=fixed_threshold
         self.percentage_threshold=percentage_threshold
