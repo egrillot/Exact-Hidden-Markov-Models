@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "exact-hidden-markov-models"
+version = "0.1.0"
+description = ""
+authors = ["egrillot <44230801+egrillot@users.noreply.github.com>"]
+readme = "README.md"
+packages = [{include = "exact_hidden_markov_models"}]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.11"
+tensorflow = "^2.11.0"
+numpy = "^1.24.1"
+hmmlearn = "^0.2.8"
+matplotlib = "^3.6.3"
+scipy = "^1.10.0"
+sklearn = "^0.0.post1"
+simdkalman = "^1.0.2"
+keras = "^2.11.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
