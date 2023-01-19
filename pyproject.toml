@@ -7,21 +7,16 @@ readme = "README.md"
 packages = [{include = "exact_hidden_markov_models"}]
 
 [tool.poetry.dependencies]
-<<<<<<< HEAD
 python = ">=3.10,<3.11"
 tensorflow = "^2.11.0"
 numpy = "^1.24.1"
-hmmlearn = "^0.2.8"
 matplotlib = "^3.6.3"
 scipy = "^1.10.0"
 sklearn = "^0.0.post1"
 simdkalman = "^1.0.2"
 keras = "^2.11.0"
+hmmlearn = "0.2.4"
 
-=======
-python = "^3.10.7"
-tensorflow-io-gcs-filesystem = { version = "^2.11.0", python = ">=3.10.7,<3.11" }
->>>>>>> 838d69472f842fbe605665bf97d72d39c6f98933
 
 [build-system]
 requires = ["poetry-core"]

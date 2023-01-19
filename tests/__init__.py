@@ -1,0 +1,1 @@
+from .test_RF_HMM import test_rf_hmm, test_rf_hmm_lstm, test_encoder_rf_hmm

@@ -440,33 +440,25 @@ numpy = ">=1.14.5"
 
 [[package]]
 name = "hmmlearn"
-version = "0.2.8"
+version = "0.2.4"
 description = "Hidden Markov Models in Python with scikit-learn like API"
 category = "main"
 optional = false
-python-versions = ">=3.6"
+python-versions = ">=3.5"
 files = [
-    {file = "hmmlearn-0.2.8-cp310-cp310-macosx_10_15_x86_64.whl", hash = "sha256:f28da60da96379d4320eb9c529187f1a1c0bcd9be437a5d1002528f6f994eb62"},
-    {file = "hmmlearn-0.2.8-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:527f29556fc33f7f0bdd9ba3b070d5e5d8b7048eb5d8c490ece15c471696e6ee"},
-    {file = "hmmlearn-0.2.8-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.whl", hash = "sha256:72414eb50921ea3c7a15293fbb4fc93f6bf2d020834dc58350cad77500737ad4"},
-    {file = "hmmlearn-0.2.8-cp310-cp310-win_amd64.whl", hash = "sha256:adb057e68e195416c04c1c2a875b84f32ac45a49f70f605f7bbdc4122b239dc8"},
-    {file = "hmmlearn-0.2.8-cp36-cp36m-macosx_10_14_x86_64.whl", hash = "sha256:9a8a5e7ae10fe28e2d2afcbbe7caff92e04588ffd2054ddb4ed5ed35e51dd58a"},
-    {file = "hmmlearn-0.2.8-cp36-cp36m-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:a9fe549522dcebc46fefdc74d5d16feaf8224dd5816cf33fbbb9ae6185dc15df"},
-    {file = "hmmlearn-0.2.8-cp36-cp36m-manylinux_2_5_x86_64.manylinux1_x86_64.whl", hash = "sha256:44664483ad7c7433cf9995f393b405f7488741c42417ad1c5f9a6c6ab00e2340"},
-    {file = "hmmlearn-0.2.8-cp36-cp36m-win_amd64.whl", hash = "sha256:78df606d307fabed92f8bcdf7f1cb2dc2e7ef1964f4613de977e662bd1895e33"},
-    {file = "hmmlearn-0.2.8-cp37-cp37m-macosx_10_15_x86_64.whl", hash = "sha256:aa6849979c1ec53b5fe06bc1663de267ead3891f75cd3cc13a65b3520e29390c"},
-    {file = "hmmlearn-0.2.8-cp37-cp37m-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:3c17461015640cc2ede69b75d6fd32cac39339d497ac21ef48e0e86125618af2"},
-    {file = "hmmlearn-0.2.8-cp37-cp37m-manylinux_2_5_x86_64.manylinux1_x86_64.whl", hash = "sha256:30f427383689ae1e34983e41f8a0b59e210326b6ae23f15dffa20feba3c7eb21"},
-    {file = "hmmlearn-0.2.8-cp37-cp37m-win_amd64.whl", hash = "sha256:2c9e154ffab6f9d70c37ac472a2ce5a798fc351af5d9410360f113200e4aa0d1"},
-    {file = "hmmlearn-0.2.8-cp38-cp38-macosx_10_15_x86_64.whl", hash = "sha256:40b29bbbf2ea8441d1ea1cb7b1cf04f1d0cf3d8b3486cfa1b57f9d98d4c38cbe"},
-    {file = "hmmlearn-0.2.8-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:d7add09c9c30c221eea9eade492441c6d707177220dc8b1ee04e4ebe49f51c1b"},
-    {file = "hmmlearn-0.2.8-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.whl", hash = "sha256:93d16582ca8be996beb361791d3620ae9566904ff12dd556dc5f88a2158691cc"},
-    {file = "hmmlearn-0.2.8-cp38-cp38-win_amd64.whl", hash = "sha256:63cb380ce707ab7bc22ebf76cb095b28224363a63ba4ccb6a61c3237005bea32"},
-    {file = "hmmlearn-0.2.8-cp39-cp39-macosx_10_15_x86_64.whl", hash = "sha256:dec1916bab77108c36cefa3ee5baca72ced6ba1f3673a52672046a63a2b0dba6"},
-    {file = "hmmlearn-0.2.8-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:a9eb2cd5647cdb96085fe4108705dd0e34f9eab43fa3ac50079d25d8df87bd44"},
-    {file = "hmmlearn-0.2.8-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.whl", hash = "sha256:127097d6be73880ac4b9cb6e4d11fd8ab3028827ea62a826647cbfe6de5955e6"},
-    {file = "hmmlearn-0.2.8-cp39-cp39-win_amd64.whl", hash = "sha256:4cf3e6de054b2a7ec2d75946e5b1cd3c3485c0b60e9b7de81374b5b8703f2387"},
-    {file = "hmmlearn-0.2.8.tar.gz", hash = "sha256:696931e3dce6801cc9b78c629f543061dd7eb67a71155b03d1b39ea172a2a5f9"},
+    {file = "hmmlearn-0.2.4-cp35-cp35m-macosx_10_14_x86_64.whl", hash = "sha256:e123b7f3a7a81c170f58de3ed91de60e9b9523c6198287448b5aa2bf9a0cd150"},
+    {file = "hmmlearn-0.2.4-cp35-cp35m-manylinux1_x86_64.whl", hash = "sha256:d0ad5f2dcf9859a922ba791ef8a697f2596254b97e781643d8f9f1d7b5750d83"},
+    {file = "hmmlearn-0.2.4-cp35-cp35m-win_amd64.whl", hash = "sha256:03f3900db8499f050236267d02fc30702ea93895e1c1d08824481a28c12aa59d"},
+    {file = "hmmlearn-0.2.4-cp36-cp36m-macosx_10_14_x86_64.whl", hash = "sha256:3218ae08a5f9f4ce8882a4ec97663c4773ac3491080d10102dc81f55d9233da4"},
+    {file = "hmmlearn-0.2.4-cp36-cp36m-manylinux1_x86_64.whl", hash = "sha256:e66ab066c54d93c34e204a714fb804df87e2a0554c5f015b6e3f35f28d2f2ef3"},
+    {file = "hmmlearn-0.2.4-cp36-cp36m-win_amd64.whl", hash = "sha256:cea08bb04ee61835fd3fb82e5cb07d8e86e71b058d3576b18d188d4f59c76b43"},
+    {file = "hmmlearn-0.2.4-cp37-cp37m-macosx_10_14_x86_64.whl", hash = "sha256:cb400505733ec29fec87b199eb23d6bd7cd464484b63710f0c3d655e7146c194"},
+    {file = "hmmlearn-0.2.4-cp37-cp37m-manylinux1_x86_64.whl", hash = "sha256:4bae07462641878d14cc41695a0ac5de6b8b0f195dd7a6a8d5f345c7bc1007da"},
+    {file = "hmmlearn-0.2.4-cp37-cp37m-win_amd64.whl", hash = "sha256:b8564ece3510a069dc6479445e761196b5128257baa587df0d247c4c556b722b"},
+    {file = "hmmlearn-0.2.4-cp38-cp38-macosx_10_14_x86_64.whl", hash = "sha256:03ef992265ee902540a996ca9582bf86fc05a6b2e47b63cf643dff54ebe545c0"},
+    {file = "hmmlearn-0.2.4-cp38-cp38-manylinux1_x86_64.whl", hash = "sha256:63be60c00737ae61d56289d0b254cd954b4fdbac6dc76bd0bf467aec827de1f0"},
+    {file = "hmmlearn-0.2.4-cp38-cp38-win_amd64.whl", hash = "sha256:841ea8318d41ed0c6947262b31febbee9a3973380e09db9ad5a3cb612ceac00e"},
+    {file = "hmmlearn-0.2.4.tar.gz", hash = "sha256:0f5cb598a7494b9703c6188246dc89e529d46cbb6700eca70cc895085f0b3cc3"},
 ]
 
 [package.dependencies]
@@ -475,7 +467,7 @@ scikit-learn = ">=0.16"
 scipy = ">=0.19"
 
 [package.extras]
-docs = ["matplotlib", "pydata-sphinx-theme", "sphinx (>=2.0)", "sphinx-gallery"]
+docs = ["Pillow", "Sphinx", "matplotlib", "sphinx-gallery"]
 tests = ["pytest"]
 
 [[package]]
@@ -1524,4 +1516,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.10,<3.11"
-content-hash = "a8841ef28a766590216df973676e5f9dedc4ab34a8774999e3925a09dfb12180"
+content-hash = "a198de7e8360c885bc3a8cfe361293197133be9a62fd57f21baa415a22b1ff3e"

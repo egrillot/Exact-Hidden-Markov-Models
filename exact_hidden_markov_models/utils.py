@@ -4,8 +4,6 @@ from hmmlearn.utils import log_mask_zero
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 from scipy import special
-from particles import kalman
-from abc import ABC, abstractmethod 
 
 def kalman_simulate_data(F, Q, x_init, T, dim_states, G=None):
     true_data = np.zeros((1,T,dim_states))
@@ -90,7 +88,7 @@ def real_predict_proba(model, X):
 
 def predict_model(model, X_test):
     # Get the hidden states
-    hidden_states_proba = utils.real_predict_proba(model, X_test) # model.predict_proba(X_test)
+    hidden_states_proba = real_predict_proba(model, X_test) # model.predict_proba(X_test)
     # Get log transition matrix
     log_T = log_mask_zero(model.transmat_)
     # Get the predicted stuff
@@ -113,4 +111,4 @@ def predict_model(model, X_test):
 
 def eval_model(model, X_test):
     # Make the prediction
-    return utils.predict_model(model, X_test)
+    return predict_model(model, X_test)

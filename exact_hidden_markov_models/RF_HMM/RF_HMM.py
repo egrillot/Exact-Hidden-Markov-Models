@@ -5,14 +5,13 @@ from hmmlearn.hmm import GaussianHMM
 from hmmlearn.base import _BaseHMM
 from ..utils import *
 
-
 class CustomGaussianHmm(GaussianHMM):
 
     def __init__(self, n_components, covariance_type, params, threshold, fixed_threshold, percentage_threshold):
         super().__init__(n_components=n_components,covariance_type=covariance_type,params=params)
-        self.threshold=threshold
-        self.fixed_threshold=fixed_threshold
-        self.percentage_threshold=percentage_threshold
+        self.threshold = threshold
+        self.fixed_threshold = fixed_threshold
+        self.percentage_threshold = percentage_threshold
 
     def _accumulate_sufficient_statistics(self, stats, obs, framelogprob,
                                           posteriors, fwdlattice, bwdlattice):
@@ -70,13 +69,19 @@ class CustomGaussianHmm(GaussianHMM):
 
 class RF_HMM():
     
-    def __init__(self,n_states,covars_type='diag',params='stmc',threshold=0.70,fixed_threshold=True,percentage_threshold=False):
-        self.model = CustomGaussianHmm(n_components=n_states,covariance_type=covars_type,params=params,threshold=threshold,fixed_threshold=fixed_threshold,percentage_threshold=percentage_threshold)
+    def __init__(self, n_states, covars_type='diag', params='stmc', threshold=0.70, fixed_threshold=True, percentage_threshold=False):
+        self.model = CustomGaussianHmm(
+            n_components=n_states,
+            covariance_type=covars_type,
+            params=params,
+            threshold=threshold,
+            fixed_threshold=fixed_threshold,
+            percentage_threshold=percentage_threshold
+        )
 
-    def train(self,time_series,display=False):
+    def train(self, time_series, display=False):
         # time_series is a n*m array
         # train self.model
-        
         self.model.fit(time_series)
         if display:
             plt.figure(figsize=(20,15))
