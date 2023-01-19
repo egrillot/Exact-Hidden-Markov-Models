@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "exact-hidden-markov-models"
+version = "0.1.0"
+description = "Forecasting using hidden states"
+authors = ["egrillot"]
+readme = "README.md"
+packages = [{include = "exact_hidden_markov_models"}]
+
+[tool.poetry.dependencies]
+python = "^3.10.7"
+tensorflow-io-gcs-filesystem = { version = "^2.11.0", python = ">=3.10.7,<3.11" }
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
